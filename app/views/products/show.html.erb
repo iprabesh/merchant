@@ -1,0 +1,23 @@
+
+<p>
+	<td><%= link_to (image_tag "products/#{@product.image_url}"), product_path(@product) %></td><br /> <br />
+</p>
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= print_price(@product.price) %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+<p>
+	<%= button_to "BUY" %>
+</p>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

@@ -1,0 +1,7 @@
+<% @products.each do |product| %>
+  <tr>
+    <td><%= link_to (image_tag "products/#{product.image_url}"), product_path(product) %></td><br /> <br />
+    <td><span class="product_title"><%= product.title %></span><%= product.description %></td> <br />
+    <td><%= print_price(product.price) %></td> <br /> <br />
+  </tr>
+<% end %>
