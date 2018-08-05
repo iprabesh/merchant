@@ -6,5 +6,8 @@ class OrderItem < ApplicationRecord
   validates :product_id, presence: true
 
  
+  def subtotal
+  	self.quantity * self.product.price
+  end
 
 end

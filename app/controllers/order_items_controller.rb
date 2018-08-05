@@ -2,7 +2,7 @@ class OrderItemsController < ApplicationController
    
 
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
-  before_action :load_order, only: [:create] 
+  before_action :load_order, only: [:create, :destroy] 
   # GET /order_items
   # GET /order_items.json
   def index
@@ -58,7 +58,7 @@ end
   def destroy
     @order_item.destroy
     respond_to do |format|
-      format.html { redirect_to order_items_url, notice: 'Order item was successfully destroyed.' }
+      format.html { redirect_to order_path(@order), notice: 'Order item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -75,7 +75,7 @@ end
     end
 
    def load_order
-    @order = Order.find_or_initialize_by(session[:order_id])
+    @order = Order.find_or_initialize_by(id: session[:order_id])
       if @order.new_record?
         @order.save!
         session[:order_id] = @order.id
