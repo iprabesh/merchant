@@ -3,11 +3,15 @@ module ProductsHelper
 		number_to_currency price
 	end
 
-	def print_stock(stock)
+	def print_stock(stock, requested=1)
+		total = stock-requested
 		if stock.zero?
 			content_tag(:strong, "Out Of Stock")
+		elsif stock < requested
+			
+			content_tag(:strong, "Insufficient stock!!")
 		else
-			"#{stock} aviliable"
+			"#{total} aviliable"
 		end
 	end
 
